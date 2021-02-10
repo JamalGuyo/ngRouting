@@ -60,7 +60,6 @@ export class ProductEditComponent implements OnInit {
         this.productService.deleteProduct(this.product.id).subscribe({
           next: () => {
             this.onSaveComplete(`${this.product.productName} was deleted`);
-            this.router.navigateByUrl('/products');
           },
           error: (err) => (this.errorMessage = err),
         });
@@ -76,7 +75,6 @@ export class ProductEditComponent implements OnInit {
             this.onSaveComplete(
               `The new ${this.product.productName} was saved`
             );
-            this.router.navigateByUrl('/products');
           },
           error: (err) => (this.errorMessage = err),
         });
@@ -86,7 +84,6 @@ export class ProductEditComponent implements OnInit {
             this.onSaveComplete(
               `The updated ${this.product.productName} was saved`
             );
-            this.router.navigateByUrl('/products');
           },
           error: (err) => (this.errorMessage = err),
         });
@@ -102,5 +99,6 @@ export class ProductEditComponent implements OnInit {
     }
 
     // Navigate back to the product list
+    this.router.navigate(['/products']);
   }
 }
