@@ -5,10 +5,45 @@
 
   <div class="card-body" *ngIf="product">
     <div class="wizard">
-      <a>Basic Information</a>
-      <a>Search Tags</a>
+      <a [routerLink]="['info']">Basic Information</a>
+      <a [routerLink]="['tags']" routerLinkActive="router-link-active"
+        >Search Tags</a
+      >
     </div>
     <router-outlet></router-outlet>
+    <div class="row mb-2">
+      <div class="col-md-4">
+        <button
+          class="btn btn-primary mr-3"
+          type="button"
+          style="width: 80px"
+          title="save your entered data:w
+        "
+          [disabled]="!isValid()"
+          (click)="saveProduct()"
+        >
+          Save
+        </button>
+        <button
+          class="btn btn-outline-secondary mr-3"
+          type="button"
+          style="width: 80px"
+          title="Cancel your edits"
+          [routerLink]="['/products']"
+        >
+          Cancel
+        </button>
+        <button
+          class="btn btn-outline-warning"
+          type="button"
+          style="width: 80px"
+          title="Delete this product"
+          (click)="deleteProduct()"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 

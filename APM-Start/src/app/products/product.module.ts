@@ -31,13 +31,13 @@ import { ProductResolver } from './product-resolver.service';
         component: ProductEditComponent,
         resolve: {
           resolvedData: ProductResolver,
-          children: [
-            { path: '', redirectTo: 'info', pathMatch: 'full' },
-            { path: 'info', component: ProductEditInfoComponent },
-            { path: 'tags', component: ProductEditTagsComponent },
-          ],
         },
-      },
+        children: [
+          { path: '', redirectTo: 'info', pathMatch: 'full' },
+          { path: 'info', component: ProductEditInfoComponent },
+          { path: 'tags', component: ProductEditTagsComponent },
+        ],
+      }
     ]),
   ],
   declarations: [
