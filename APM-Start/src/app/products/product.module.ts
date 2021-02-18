@@ -11,12 +11,16 @@ import { SharedModule } from '../shared/shared.module';
 
 import { ProductResolver } from './product-resolver.service';
 
+import { CanActivate } from '@angular/router';
+import { AuthGuard } from '../user/auth.guard';
+
 @NgModule({
   imports: [
     SharedModule,
     RouterModule.forChild([
       {
         path: 'products',
+        canActivate: [AuthGuard],
         children: [
           {
             path: '',
