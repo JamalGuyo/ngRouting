@@ -18,7 +18,7 @@ const ROUTES = [
   },
   {
     path: 'products',
-    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
     loadChildren: () =>
       import('./products/product.module').then((m) => m.ProductModule),
   },
