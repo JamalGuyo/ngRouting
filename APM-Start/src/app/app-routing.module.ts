@@ -3,6 +3,8 @@ import { RouterModule } from '@angular/router';
 // components
 import { WelcomeComponent } from './home/welcome.component';
 import { PageNotFoundComponent } from './page-not-found.component';
+// GUARDS
+import { AuthGuard } from './user/auth.guard';
 // Route
 const ROUTES = [
   {
@@ -13,6 +15,12 @@ const ROUTES = [
     path: '',
     redirectTo: 'welcome',
     pathMatch: 'full',
+  },
+  {
+    path: 'products',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./products/product.module').then((m) => m.ProductModule),
   },
   {
     path: '**',
