@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 // components
 import { WelcomeComponent } from './home/welcome.component';
 import { PageNotFoundComponent } from './page-not-found.component';
@@ -18,7 +18,7 @@ const ROUTES = [
   },
   {
     path: 'products',
-    canLoad: [AuthGuard],
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./products/product.module').then((m) => m.ProductModule),
   },
@@ -29,7 +29,9 @@ const ROUTES = [
 ];
 //
 @NgModule({
-  imports: [RouterModule.forRoot(ROUTES)],
+  imports: [
+    RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
